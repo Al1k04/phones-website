@@ -1,6 +1,10 @@
+"use client";
+import { useCart } from "../context/CartContext";
 import { Phone } from "../types/phone";
 
 export default function PhoneCard({ phone }: { phone: Phone }) {
+  const { addToCart } = useCart();
+
   return (
     <div className="bg-gray-800 rounded-xl p-4 transition hover:scale-105 hover:shadow-2xl cursor-pointer duration-175 ease-in-out">
       <img
@@ -15,6 +19,7 @@ export default function PhoneCard({ phone }: { phone: Phone }) {
       <p className="text-right text-gray-300 font-bold text-xl">
         {phone.price} ₾
       </p>
+      <button onClick={() => addToCart(phone)}>Add to Cart</button>
     </div>
   );
 }
